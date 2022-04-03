@@ -54,10 +54,10 @@
         app:layout_constraintVertical_bias="0.058" />
 
     <com.example.appsenku.Tablero
-        android:id="@+id/tablero5"
-        android:layout_width="405dp"
-        android:layout_height="612dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="119dp" />
+        android:id="@+id/tablero6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="136dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
