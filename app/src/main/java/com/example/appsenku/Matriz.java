@@ -27,6 +27,7 @@ public class Matriz {
                 {-1,-1,1,1,1,-1,-1}
         };
 
+
         for (int y = 0; y < 7; y++){
             for (int x = 0; x < 7; x++){
                 if(this.matriz[x][y] == this.PIEZA){
