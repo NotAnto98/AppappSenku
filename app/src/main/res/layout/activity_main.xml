@@ -55,9 +55,11 @@
 
     <com.example.appsenku.Tablero
         android:id="@+id/tablero6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="136dp" />
+        android:layout_width="1225px"
+        android:layout_height="1225px"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/divider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
