@@ -15,6 +15,10 @@ import androidx.annotation.Nullable;
 
 public class Tablero extends View {
 
+    public static final int VACIA = 0;
+    public static final int LIMITE = -1;
+    public static final int FICHA = 1;
+
     public Tablero(Context context) {
         super(context);
     }
@@ -73,7 +77,10 @@ public class Tablero extends View {
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         int x= (int)(event.getX()/(70*2.5));
+        int y = (int)(event.getY()/(70*2.5));
         Log.d("SENKU","X="+x);
+        Log.d("SENKU","Y="+y);
+        estadoMovimiento();
         return super.dispatchTouchEvent(event);
     }
 
@@ -84,29 +91,43 @@ public class Tablero extends View {
                 double i = x*70*2.5;
                 double j = y*70*2.5;
                 if(matriz[x][y] == -1){
-                    super.onDraw(canvas);
-                    Paint p2 = new Paint(Paint.ANTI_ALIAS_FLAG);
-                    Bitmap bmp2 =
-                            BitmapFactory.decodeResource(getResources(), R.drawable.tablero);
-                    canvas.drawBitmap(bmp2,(int)i,(int)j,p2);
+
                 }
                 else if(matriz[x][y] == 0){
                     super.onDraw(canvas);
                     Paint p2 = new Paint(Paint.ANTI_ALIAS_FLAG);
                     Bitmap bmp2 =
-                            BitmapFactory.decodeResource(getResources(), R.drawable.vacia);
+                            BitmapFactory.decodeResource(getResources(), R.drawable.negra);
                     canvas.drawBitmap(bmp2,(int)i,(int)j,p2);
                 }
                 else if(matriz[x][y] == 1){
                     super.onDraw(canvas);
                     Paint p2 = new Paint(Paint.ANTI_ALIAS_FLAG);
                     Bitmap bmp2 =
-                            BitmapFactory.decodeResource(getResources(), R.drawable.llena);
+                            BitmapFactory.decodeResource(getResources(), R.drawable.ficha);
                     canvas.drawBitmap(bmp2,(int)i,(int)j,p2);
                 }
             }
         }
     }
+
+    public void estadoMovimiento(){
+        boolean movPosible = false;
+        for(int y = 0; y<5; y++){
+            for(int x = 0;x<5;x++){
+                if((this.matriz[x][y] == 1 && this.matriz[x+1][y] == 1 && this.matriz[x+2][y] == 0) ||
+                        (this.matriz[x][y] == 0 && this.matriz[x+1][y] == 1 && this.matriz[x+2][y] == 1) ||
+                        (this.matriz[x][y] == 1 && this.matriz[x][y+1] == 1 && this.matriz[x][y+2] == 0) ||
+                        (this.matriz[x][y] == 0 && this.matriz[x][y+1] == 1 && this.matriz[x][y+2] == 1)){
+                    Log.d("SENKU","se pueden hacer movimientos"+this.matriz[x][y]);
+                }else{
+                    Log.d("SENKU","noooo");
+                }
+
+            }
+        }
+    }
+
 
 
 }
