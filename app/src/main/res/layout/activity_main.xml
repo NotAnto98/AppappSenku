@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
@@ -55,9 +56,11 @@
 
     <com.example.appsenku.Tablero
         android:id="@+id/tablero6"
+        android:background="@drawable/board_bg"
         android:layout_width="1225px"
         android:layout_height="1225px"
         android:layout_marginTop="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/divider" />
