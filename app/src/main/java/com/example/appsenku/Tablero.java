@@ -80,7 +80,7 @@ public class Tablero extends View {
         int y = (int)(event.getY()/(70*2.5));
         Log.d("SENKU","X="+x);
         Log.d("SENKU","Y="+y);
-        estadoMovimiento();
+        estadoMovimiento(event);
         return super.dispatchTouchEvent(event);
     }
 
@@ -111,21 +111,25 @@ public class Tablero extends View {
         }
     }
 
-    public void estadoMovimiento(){
+    public boolean estadoMovimiento(MotionEvent event){
+        int x= (int)(event.getX()/(70*2.5));
+        int y = (int)(event.getY()/(70*2.5));
         boolean movPosible = false;
-        for(int y = 0; y<5; y++){
-            for(int x = 0;x<5;x++){
+        for( ;y<5; y++){
+            for(;x<5;x++){
                 if((this.matriz[x][y] == 1 && this.matriz[x+1][y] == 1 && this.matriz[x+2][y] == 0) ||
                         (this.matriz[x][y] == 0 && this.matriz[x+1][y] == 1 && this.matriz[x+2][y] == 1) ||
                         (this.matriz[x][y] == 1 && this.matriz[x][y+1] == 1 && this.matriz[x][y+2] == 0) ||
                         (this.matriz[x][y] == 0 && this.matriz[x][y+1] == 1 && this.matriz[x][y+2] == 1)){
-                    Log.d("SENKU","se pueden hacer movimientos"+this.matriz[x][y]);
+                    Log.d("SENKU","se pueden hacer movimientos"+x);
+                    movPosible = true;
                 }else{
-                    Log.d("SENKU","noooo");
+                    Log.d("SENKU","no se pueden hacer movimientos");
                 }
 
             }
         }
+        return movPosible;
     }
 
 
