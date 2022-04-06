@@ -31,39 +31,6 @@ public class Tablero extends View {
         super(context, attrs, defStyleAttr);
     }
 
-//    public com.example.appsenku.Tablero(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-//        super(context, attrs, defStyleAttr, defStyleRes);
-//    }
-
-    /*protected void onDraw(Canvas canvas) {
-
-        for(int y = 0; y < 490*2.5; y+=70*2.5){
-                for(int x = 0; x < 490*2.5; x+=70*2.5){
-                    if((x>=0 && x<140*2.5 && y>=0 && y<140*2.5) ||
-                       (x>=0 && x<140*2.5 && y>=350*2.5 && y<=490*2.5) ||
-                       (x>=350*2.5 && x<=490*2.5 && y>=0 && y<140*2.5) ||
-                       (x>=350*2.5 && x<=490*2.5 && y>=350*2.5 && y<=490*2.5)) {
-                        super.onDraw(canvas);
-                        Paint p2 = new Paint(Paint.ANTI_ALIAS_FLAG);
-                        Bitmap bmp2 =
-                                BitmapFactory.decodeResource(getResources(), R.drawable.tablero);
-                        canvas.drawBitmap(bmp2,x,y,p2);
-                    }else{
-                        super.onDraw(canvas);
-                        Paint p2 = new Paint(Paint.ANTI_ALIAS_FLAG);
-                        Bitmap bmp2 =
-                                BitmapFactory.decodeResource(getResources(), R.drawable.vacia);
-                        canvas.drawBitmap(bmp2,x,y,p2);
-
-                    }
-
-                }
-
-
-
-        }
-
-    }*/
     public int[][] matriz=  new int[][]{
         {-1,-1,1,1,1,-1,-1},
         {-1,-1,1,1,1,-1,-1},
@@ -78,9 +45,41 @@ public class Tablero extends View {
     public boolean dispatchTouchEvent(MotionEvent event) {
         int x= (int)(event.getX()/(70*2.5));
         int y = (int)(event.getY()/(70*2.5));
-        Log.d("SENKU","X="+x);
-        Log.d("SENKU","Y="+y);
-        estadoMovimiento(event);
+
+        int a = x+1;
+        int b = x+2;
+        int c = x-1;
+        int d = x-2;
+        int e = y+1;
+        int f = y+2;
+        int g = y-1;
+        int h = y-2;
+
+        if(a < 7 && b < 7){
+            if(this.matriz[x][y] == 1 && this.matriz[a][y] == 1 && this.matriz[b][y] == 0){
+                Log.d("Senku", "derecha");
+            }
+        }
+        if(c >= 0 && d >= 0){
+            if(this.matriz[x][y] == 1 && this.matriz[c][y] == 1 && this.matriz[d][y] == 0){
+                Log.d("Senku", "izquierda");
+            }
+        }
+        if(e < 7 && f < 7){
+            if(this.matriz[x][y] == 1 && this.matriz[x][e] == 1 && this.matriz[x][f] == 0){
+                Log.d("Senku", "arriba");
+            }
+        }
+        if(g >= 0 && h >= 0){
+            if(this.matriz[x][y] == 1 && this.matriz[x][g] == 1 && this.matriz[x][h] == 0){
+                Log.d("Senku", "abajo");
+            }
+        }
+
+
+        //Log.d("SENKU","X="+x);
+        //Log.d("SENKU","Y="+y);
+        //estadoMovimiento(event);
         return super.dispatchTouchEvent(event);
     }
 
