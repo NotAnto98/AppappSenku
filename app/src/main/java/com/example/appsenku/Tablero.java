@@ -61,8 +61,16 @@ public class Tablero extends View {
         int g = y-1;
         int h = y-2;
 
+
+
         if(selected){
-            if(this.matriz[x][y] == 0 && this.matriz[c][y] == 1 && d == selX && y == selY){
+
+            if(matriz[x][y]==1){ //seleccion de ficha
+                selX = x;
+                selY = y;
+                this.invalidate();
+            }
+            if(this.matriz[x][y] == 0 && this.matriz[c][y] == 1 && d == selX && y == selY){ //movimiento legal hacia la izquierda
                 Log.d("Senku", "izquierda");
                 selX = x;
                 selY = y;
@@ -72,7 +80,7 @@ public class Tablero extends View {
                 selected = false;
                 this.invalidate();
             }
-            if(this.matriz[x][y] == 0 && this.matriz[a][y] == 1 && b == selX && y == selY){
+            if(this.matriz[x][y] == 0 && this.matriz[a][y] == 1 && b == selX && y == selY){ //movimiento legal hacia la derecha
                 Log.d("Senku", "derecha");
                 selX = x;
                 selY = y;
@@ -82,7 +90,7 @@ public class Tablero extends View {
                 selected = false;
                 this.invalidate();
             }
-            if(this.matriz[x][y] == 0 && this.matriz[x][e] == 1 && x == selX && f == selY){
+            if(this.matriz[x][y] == 0 && this.matriz[x][e] == 1 && x == selX && f == selY){ //movimiento legal hacia abajo
                 Log.d("Senku", "abajo");
                 selX = x;
                 selY = y;
@@ -92,7 +100,7 @@ public class Tablero extends View {
                 selected = false;
                 this.invalidate();
             }
-            if(this.matriz[x][y] == 0 && this.matriz[x][g] == 1 && x == selX && h == selY){
+            if(this.matriz[x][y] == 0 && this.matriz[x][g] == 1 && x == selX && h == selY){ //movimiento legal hacia arriba
                 Log.d("Senku", "arriba");
                 selX = x;
                 selY = y;
@@ -102,53 +110,29 @@ public class Tablero extends View {
                 selected = false;
                 this.invalidate();
             }
+
+            else{ //movimiento ilegal
+                if(matriz[x][y]==0){
+                    Toast toast = Toast.makeText(test, "Movimiento no válido", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            }
         }
         else{
-            if(a < 7 && b < 7){
-                if(this.matriz[x][y] == 1 && this.matriz[a][y] == 1 && this.matriz[b][y] == 0){
-                    Log.d("Senku", "derecha");
-                    selX = x;
-                    selY = y;
-                    selected = true;
-                    Toast toast = Toast.makeText(test, "Ajustes guardados", Toast.LENGTH_LONG);
-                    toast.show();
-                    this.invalidate();
-                }
+            if(matriz[x][y]==1){ //seleccion de ficha
+                selX = x;
+                selY = y;
+                selected = true;
+                this.invalidate();
             }
-            if(c >= 0 && d >= 0){
-                if(this.matriz[x][y] == 1 && this.matriz[c][y] == 1 && this.matriz[d][y] == 0){
-                    Log.d("Senku", "izquierda");
-                    selX = x;
-                    selY = y;
-                    selected = true;
-                    this.invalidate();
-                }
+
+            if(matriz[x][y]==0){ //movimineto ilegal, hueco vacio
+                Toast toast = Toast.makeText(test, "Movimiento no válido", Toast.LENGTH_LONG);
+                toast.show();
             }
-            if(e < 7 && f < 7){
-                if(this.matriz[x][y] == 1 && this.matriz[x][e] == 1 && this.matriz[x][f] == 0){
-                    Log.d("Senku", "abajo");
-                    selX = x;
-                    selY = y;
-                    selected = true;
-                    this.invalidate();
-                }
-            }
-            if(g >= 0 && h >= 0){
-                if(this.matriz[x][y] == 1 && this.matriz[x][g] == 1 && this.matriz[x][h] == 0){
-                    Log.d("Senku", "arriba");
-                    selX = x;
-                    selY = y;
-                    selected = true;
-                    this.invalidate();
-                }
-            }
+
         }
 
-
-
-        //Log.d("SENKU","X="+x);
-        //Log.d("SENKU","Y="+y);
-        //estadoMovimiento(event);
         return super.dispatchTouchEvent(event);
     }
 
@@ -181,8 +165,11 @@ public class Tablero extends View {
         if(selected == true){
             Paint p1 = new Paint(Paint.ANTI_ALIAS_FLAG);
             p1.setColor(Color.RED);
-            canvas.drawRect(selX*70*2.5f, selY*70*2.5f, (selX+1)*70*2.5f-10, (selY+1)*70*2.5f-10, p1);
+            Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.drawable.ficha_seleccionada);
+            canvas.drawBitmap(bmp3,selX*70*2.5f,selY*70*2.5f,p1);
         }
+
+
     }
 
     public boolean estadoMovimiento(MotionEvent event){
