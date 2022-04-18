@@ -119,7 +119,7 @@ public class Tablero extends View {
             }
         }
         else{
-            if(matriz[x][y]==1){ //seleccion de ficha
+            if(matriz[x][y]==1){ //seleccion de ficha.
                 selX = x;
                 selY = y;
                 selected = true;
