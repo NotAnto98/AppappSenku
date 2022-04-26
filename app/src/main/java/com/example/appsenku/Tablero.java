@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
+
 public class Tablero extends View {
 
     public static final int VACIA = 0;
@@ -23,6 +25,7 @@ public class Tablero extends View {
     public int selX = 0;
     public int selY = 0;
     public Boolean selected = false;
+    public static Boolean resetV = false;
     public Activity test = null;
 
     public Tablero(Context context) {
@@ -37,7 +40,19 @@ public class Tablero extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    public int[][] matriz=  new int[][]{
+    public int[][] reset_matriz(){
+        return new int[][] {{-1,-1,1,1,1,-1,-1},
+                {-1,-1,1,1,1,-1,-1},
+                {1,1,1,1,1,1,1},
+                {1,1,1,0,1,1,1},
+                {1,1,1,1,1,1,1},
+                {-1,-1,1,1,1,-1,-1},
+                {-1,-1,1,1,1,-1,-1}};
+    }
+
+
+
+    public static int[][] matriz=  new int[][]{
         {-1,-1,1,1,1,-1,-1},
         {-1,-1,1,1,1,-1,-1},
         {1,1,1,1,1,1,1},
@@ -45,12 +60,31 @@ public class Tablero extends View {
         {1,1,1,1,1,1,1},
         {-1,-1,1,1,1,-1,-1},
         {-1,-1,1,1,1,-1,-1}
+
     };
+
+    public void full_reset(){
+
+        matriz = new int[][]{
+                {-1,-1,1,1,1,-1,-1},
+                {-1,-1,1,1,1,-1,-1},
+                {1,1,1,1,1,1,1},
+                {1,1,1,0,1,1,1},
+                {1,1,1,1,1,1,1},
+                {-1,-1,1,1,1,-1,-1},
+                {-1,-1,1,1,1,-1,-1}
+
+        };
+        //matriz = reset_matriz();
+
+    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
+
         int x= (int)(event.getX()/(70*2.5));
         int y = (int)(event.getY()/(70*2.5));
+
 
         int a = x+1;
         int b = x+2;
@@ -60,6 +94,7 @@ public class Tablero extends View {
         int f = y+2;
         int g = y-1;
         int h = y-2;
+
 
         if(selected){
             if(this.matriz[x][y] == 0 && this.matriz[c][y] == 1 && d == selX && y == selY){
@@ -153,6 +188,7 @@ public class Tablero extends View {
     }
 
     protected void onDraw(Canvas canvas) {
+
 
         for(int y = 0; y<7; y++){
             for(int x = 0; x<7; x++){
