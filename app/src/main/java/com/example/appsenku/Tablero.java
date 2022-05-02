@@ -26,6 +26,7 @@ public class Tablero extends View {
     public int selX = 0;
     public int selY = 0;
     public Boolean selected = false;
+    public static Boolean resetV = false;
     public Activity test = null;
 
     public Tablero(Context context) {
@@ -40,6 +41,17 @@ public class Tablero extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    public int[][] reset_matriz(){
+        return new int[][] {{-1,-1,1,1,1,-1,-1},
+                {-1,-1,1,1,1,-1,-1},
+                {1,1,1,1,1,1,1},
+                {1,1,1,0,1,1,1},
+                {1,1,1,1,1,1,1},
+                {-1,-1,1,1,1,-1,-1},
+                {-1,-1,1,1,1,-1,-1}};
+    }
+
+
     public int[][] matriz=  new int[][]{
             {-1,-1,1,1,1,-1,-1},
             {-1,-1,1,1,1,-1,-1},
@@ -49,6 +61,22 @@ public class Tablero extends View {
             {-1,-1,1,1,1,-1,-1},
             {-1,-1,1,1,1,-1,-1}
     };
+
+    public void full_reset(){
+
+        matriz = new int[][]{
+                {-1,-1,1,1,1,-1,-1},
+                {-1,-1,1,1,1,-1,-1},
+                {1,1,1,1,1,1,1},
+                {1,1,1,0,1,1,1},
+                {1,1,1,1,1,1,1},
+                {-1,-1,1,1,1,-1,-1},
+                {-1,-1,1,1,1,-1,-1}
+
+        };
+        //matriz = reset_matriz();
+
+    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
@@ -277,6 +305,7 @@ public class Tablero extends View {
             toast.show();
             res = false;
             Log.d("perdida", "perdida");
+            //yo aqui pondría una ventana emergente con posibilidad de reiniciar el tablero
         }
 
         return res;
