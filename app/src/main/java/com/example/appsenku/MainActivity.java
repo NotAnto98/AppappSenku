@@ -18,7 +18,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Tablero t = (Tablero) findViewById(R.id.tablero6);
         t.test = this;
-
+        Button reset = findViewById(R.id.button2);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Tablero t = (Tablero) findViewById(R.id.tablero6);
+                t.full_reset();
+                t.invalidate();
+            }
+        });
 
         Button info = findViewById(R.id.button4);
         info.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+    }
+
+
+    public void onClick(View view) {
 
     }
 
