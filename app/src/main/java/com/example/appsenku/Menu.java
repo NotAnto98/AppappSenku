@@ -3,6 +3,8 @@ package com.example.appsenku;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +18,7 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
+        getSupportActionBar().hide();
         Button info = findViewById(R.id.jugar);
         info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,15 +32,32 @@ public class Menu extends AppCompatActivity {
 
         Button cerrar = findViewById(R.id.salir);
         cerrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Crear un llamado a la clase principal pero
-                //en el momento que se llama se borren todas las actividades
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
+                public void onClick(View v){
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(Menu.this);
+                    alerta.setMessage("¿Está seguro de que desea salir?").setCancelable(false)
+                    .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.addCategory(Intent.CATEGORY_HOME);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+
+                    AlertDialog titulo = alerta.create();
+                    titulo.setTitle("Salir del juego");
+                    titulo.show();
+                }
+            });
+
+
+
     }
 }
