@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class Menu extends AppCompatActivity {
-
     public Activity test = null;
 
     @Override

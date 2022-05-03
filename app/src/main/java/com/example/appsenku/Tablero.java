@@ -1,5 +1,5 @@
 package com.example.appsenku;
-
+import com.example.appsenku.MainActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,7 +11,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.Toast;
+import android.widget.Chronometer;
 
 import androidx.annotation.Nullable;
 
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tablero extends View {
+    MainActivity main = new MainActivity();
 
     public static final int VACIA = 0;
     public static final int LIMITE = -1;
@@ -28,7 +31,7 @@ public class Tablero extends View {
     public Boolean selected = false;
     public static Boolean resetV = false;
     public Activity test = null;
-
+    public Chronometer crono;
     public Tablero(Context context) {
         super(context);
     }
@@ -74,6 +77,7 @@ public class Tablero extends View {
                 {-1,-1,1,1,1,-1,-1}
 
         };
+
         //matriz = reset_matriz();
 
     }
