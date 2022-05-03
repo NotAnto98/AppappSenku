@@ -1,5 +1,5 @@
 package com.example.appsenku;
-import com.example.appsenku.MainActivity;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,17 +11,17 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Chronometer;
 import android.widget.Toast;
-import android.widget.Chronometer;
 
 import androidx.annotation.Nullable;
+
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Tablero extends View {
-    MainActivity main = new MainActivity();
 
     public static final int VACIA = 0;
     public static final int LIMITE = -1;
@@ -31,7 +31,7 @@ public class Tablero extends View {
     public Boolean selected = false;
     public static Boolean resetV = false;
     public Activity test = null;
-    public Chronometer crono;
+
     public Tablero(Context context) {
         super(context);
     }
@@ -77,7 +77,6 @@ public class Tablero extends View {
                 {-1,-1,1,1,1,-1,-1}
 
         };
-
         //matriz = reset_matriz();
 
     }
@@ -302,6 +301,19 @@ public class Tablero extends View {
             toast.show();
             res = false;
             Log.d("ganada", "ganada");
+
+            String stringId = "PARTIDA GANADA :)";
+            Snackbar mySnackbar = Snackbar.make(Tablero.this, stringId, BaseTransientBottomBar.LENGTH_INDEFINITE);
+            String undo_string = "Reiniciar";
+            mySnackbar.setAction(undo_string, new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    full_reset();
+                    invalidate();
+                }
+
+            });
+            mySnackbar.show();
         }
 
         else if(gameOver() == true){
@@ -309,7 +321,19 @@ public class Tablero extends View {
             toast.show();
             res = false;
             Log.d("perdida", "perdida");
-            //yo aqui pondría una ventana emergente con posibilidad de reiniciar el tablero
+
+            String stringId = "PARTIDA PERDIDA :(";
+            Snackbar mySnackbar = Snackbar.make(Tablero.this, stringId, BaseTransientBottomBar.LENGTH_INDEFINITE);
+            String undo_string = "Reiniciar";
+            mySnackbar.setAction(undo_string, new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    full_reset();
+                    invalidate();
+                }
+
+            });
+            mySnackbar.show();
         }
 
         return res;
