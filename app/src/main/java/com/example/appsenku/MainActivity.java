@@ -8,12 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         Tablero t = (Tablero) findViewById(R.id.tablero6);
         t.test = this;
+
+        Chronometer simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer); // initiate a chronometer
+
+        simpleChronometer.start(); // start a chronometer
+        t.invalidate();
 
         Button info = findViewById(R.id.button4);
         info.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Tablero t = (Tablero) findViewById(R.id.tablero6);
                                 t.full_reset();
+                                simpleChronometer.setBase(SystemClock.elapsedRealtime());
                                 t.invalidate();
+
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {

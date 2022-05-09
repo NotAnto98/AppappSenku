@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Chronometer
+        android:id="@+id/simpleChronometer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center_horizontal"
+        android:textColor="#3095FB"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/tablero6"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintVertical_bias="0.615"
+        tools:ignore="MissingConstraints,UnknownId"
+        tools:layout_editor_absoluteX="-1dp" />
+
 
     <Button
         android:id="@+id/clue"
