@@ -4,23 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/board_bg"
     tools:context=".MainActivity">
+
 
     <Chronometer
         android:id="@+id/simpleChronometer"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 
+        android:layout_marginBottom="68dp"
         android:gravity="center_horizontal"
-        android:textColor="#3095FB"
+        android:textColor="#541BBA"
         android:textSize="25sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/tablero6"
         app:layout_constraintTop_toBottomOf="@+id/button3"
         app:layout_constraintVertical_bias="0.615"
         tools:ignore="MissingConstraints,UnknownId"
-        tools:layout_editor_absoluteX="-1dp" />
-
+        tools:layout_editor_absoluteX="-16dp" />
 
     <Button
         android:id="@+id/clue"
@@ -61,8 +63,8 @@
         android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset"
         android:onClick="onClick"
+        android:text="Reset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.832"
@@ -72,13 +74,25 @@
 
     <com.example.appsenku.Tablero
         android:id="@+id/tablero6"
-        android:background="@drawable/board_bg"
         android:layout_width="1225px"
         android:layout_height="1225px"
         android:layout_marginTop="52dp"
+        android:background="@drawable/board_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/divider" />
+        app:layout_constraintTop_toTopOf="@+id/divider"
+        app:layout_constraintVertical_bias="0.694" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="235dp"
+        android:layout_height="328dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.131"
+        app:srcCompat="@drawable/cronosin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
