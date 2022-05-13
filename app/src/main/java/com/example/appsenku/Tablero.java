@@ -197,7 +197,7 @@ public class Tablero extends View {
             }
         }
 
-        int n = (int)Math.round(Math.random() * (movimientosPosibles.size()));
+        int n = (int)Math.floor(Math.random() * (movimientosPosibles.size()));
         int posible1 = movimientosPosibles.get(n).get(0);
         int posible2 = movimientosPosibles.get(n).get(1);
         selected = true;
@@ -269,8 +269,6 @@ public class Tablero extends View {
                 }
             }
         }
-
-        Log.d("mov posible", "mov posibles " + movimientosPosibles);
 
         if(movimientosPosibles.size() == 0){
             return true;
