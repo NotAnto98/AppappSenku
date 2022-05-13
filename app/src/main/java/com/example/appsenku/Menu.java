@@ -28,6 +28,8 @@ public class Menu extends AppCompatActivity {
                 //sería interesante poner que cuando pulses en jugar salga un toast o algun mensaje
                 //explicando que hace cada boton en el menu de juego
             }
+
+            
         });
 
         Button cerrar = findViewById(R.id.salir);
