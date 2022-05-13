@@ -2,6 +2,7 @@ package com.example.appsenku;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -26,6 +27,7 @@ public class Tablero extends View {
 
     public int selX = 0;
     public int selY = 0;
+    public  int puntuacion = 0;
     public Boolean selected = false;
     public Activity test = null;
 
@@ -42,6 +44,7 @@ public class Tablero extends View {
     }
 
 
+
     public int[][] matriz=  new int[][]{
             {-1,-1,1,1,1,-1,-1},
             {-1,-1,1,1,1,-1,-1},
@@ -51,6 +54,8 @@ public class Tablero extends View {
             {-1,-1,1,1,1,-1,-1},
             {-1,-1,1,1,1,-1,-1}
     };
+
+
 
     public void full_reset(){
 
@@ -65,11 +70,14 @@ public class Tablero extends View {
 
         };
 
+        puntuacion = 0;
+
 
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
+
         int x= (int)(event.getX()/(70*2.5));
         int y = (int)(event.getY()/(70*2.5));
 
@@ -86,6 +94,7 @@ public class Tablero extends View {
 
         if(selected){
 
+
             if(matriz[x][y]==1){ //seleccion de ficha
                 selX = x;
                 selY = y;
@@ -99,7 +108,14 @@ public class Tablero extends View {
                 this.matriz[c][y] = 0;
                 this.matriz[d][y] = 0;
                 selected = false;
+                this.puntuacion += 100;
+                Toast toast = Toast.makeText(test, "+ 100 puntos", Toast.LENGTH_SHORT);
+                toast.show();
+
+                Log.d("puntuacion", "puntos: " +getScore());
+
                 compruebaFinal();
+
                 this.invalidate();
             }
             if(a < 7 && b < 7 && this.matriz[x][y] == 0 && this.matriz[a][y] == 1 && b == selX && y == selY){ //movimiento legal hacia la derecha
@@ -110,6 +126,11 @@ public class Tablero extends View {
                 this.matriz[a][y] = 0;
                 this.matriz[b][y] = 0;
                 selected = false;
+                this.puntuacion += 100;
+                Toast toast = Toast.makeText(test, "+ 100 puntos", Toast.LENGTH_SHORT);
+                toast.show();
+
+                Log.d("puntuacion", "puntos: " +getScore());
                 compruebaFinal();
                 this.invalidate();
             }
@@ -120,6 +141,12 @@ public class Tablero extends View {
                 this.matriz[x][e] = 0;
                 this.matriz[x][f] = 0;
                 selected = false;
+                this.puntuacion+= 100;
+                Toast toast = Toast.makeText(test, "+ 100 puntos", Toast.LENGTH_SHORT);
+                toast.show();
+
+                Log.d("puntuacion", "puntos: " +getScore());
+
                 compruebaFinal();
                 this.invalidate();
             }
@@ -130,6 +157,11 @@ public class Tablero extends View {
                 this.matriz[x][g] = 0;
                 this.matriz[x][h] = 0;
                 selected = false;
+                this.puntuacion += 100;
+                Toast toast = Toast.makeText(test, "+ 100 puntos", Toast.LENGTH_SHORT);
+                toast.show();
+                Log.d("puntuacion", "puntos: " +getScore());
+
                 compruebaFinal();
                 this.invalidate();
             }
@@ -355,6 +387,16 @@ public class Tablero extends View {
 
 
     }
+
+    public Integer getScore(){
+
+        return puntuacion;
+    }
+
+
+
+
+
 
 
 
