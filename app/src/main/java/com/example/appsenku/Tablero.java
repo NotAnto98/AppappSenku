@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -23,13 +24,9 @@ import java.util.List;
 
 public class Tablero extends View {
 
-    public static final int VACIA = 0;
-    public static final int LIMITE = -1;
-    public static final int FICHA = 1;
     public int selX = 0;
     public int selY = 0;
     public Boolean selected = false;
-    public static Boolean resetV = false;
     public Activity test = null;
 
     public Tablero(Context context) {
@@ -42,16 +39,6 @@ public class Tablero extends View {
 
     public Tablero(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    public int[][] reset_matriz(){
-        return new int[][] {{-1,-1,1,1,1,-1,-1},
-                {-1,-1,1,1,1,-1,-1},
-                {1,1,1,1,1,1,1},
-                {1,1,1,0,1,1,1},
-                {1,1,1,1,1,1,1},
-                {-1,-1,1,1,1,-1,-1},
-                {-1,-1,1,1,1,-1,-1}};
     }
 
 
@@ -77,7 +64,7 @@ public class Tablero extends View {
                 {-1,-1,1,1,1,-1,-1}
 
         };
-        //matriz = reset_matriz();
+
 
     }
 
@@ -297,8 +284,6 @@ public class Tablero extends View {
     public boolean compruebaFinal(){
         boolean res = true;
         if(partidaGanada() == true){
-            Toast toast = Toast.makeText(test, "Partida Ganada", Toast.LENGTH_SHORT);
-            toast.show();
             res = false;
             Log.d("ganada", "ganada");
 
@@ -317,8 +302,6 @@ public class Tablero extends View {
         }
 
         else if(gameOver() == true){
-            Toast toast = Toast.makeText(test, "Partida perdida", Toast.LENGTH_SHORT);
-            toast.show();
             res = false;
             Log.d("perdida", "perdida");
 
