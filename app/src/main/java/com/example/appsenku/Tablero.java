@@ -78,8 +78,8 @@ public class Tablero extends View {
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
 
-        int x= (int)(event.getX()/(70*2.5));
-        int y = (int)(event.getY()/(70*2.5));
+        int x= (int)(event.getX()/(70*2.2));
+        int y = (int)(event.getY()/(70*2.2));
 
         boolean compruebaFinal = true;
 
@@ -357,8 +357,8 @@ public class Tablero extends View {
 
         for(int y = 0; y<7; y++){
             for(int x = 0; x<7; x++){
-                double i = x*70*2.5;
-                double j = y*70*2.5;
+                double i = x*70*2.2;
+                double j = y*70*2.2;
                 if(matriz[x][y] == 0){
                     super.onDraw(canvas);
                     Paint p2 = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -380,7 +380,7 @@ public class Tablero extends View {
             Paint p1 = new Paint(Paint.ANTI_ALIAS_FLAG);
             p1.setColor(Color.RED);
             Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.drawable.ficha_seleccionada);
-            canvas.drawBitmap(bmp3,selX*70*2.5f,selY*70*2.5f,p1);
+            canvas.drawBitmap(bmp3,selX*70*2.2f,selY*70*2.2f,p1);
         }
 
 

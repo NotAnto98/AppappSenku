@@ -52,7 +52,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#A52A2A"
-        android:onClick="onClick"
         android:text="Reset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,32 +60,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.058" />
 
-    <com.example.appsenku.Tablero
-        android:id="@+id/tablero6"
-        android:layout_width="1225px"
-        android:layout_height="1225px"
-        android:background="@drawable/board_bg"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/divider"
-        app:layout_constraintVertical_bias="0.694" />
-
-
-    <LinearLayout
-        android:layout_width="560dp"
-        android:layout_height="209dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/tablero6"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.573"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119"
-        app:srcCompat="@drawable/cronosin" />
 
     <Button
         android:id="@+id/score"
@@ -120,14 +93,14 @@
             android:layout_height="40dp"
 
             android:gravity="center_horizontal"
-            android:textColor="#A52A2A"
+            android:textColor="#000000"
             android:textSize="25sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.324"
+            app:layout_constraintVertical_bias="0.266"
             tools:ignore="MissingConstraints,UnknownId" />
 
         <TextView
@@ -135,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tiempo:"
-            android:textColor="#A52A2A"
+            android:textColor="#000000"
             android:textSize="25sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -143,7 +116,17 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.322" />
+            app:layout_constraintVertical_bias="0.269" />
+
+        <com.example.appsenku.Tablero
+            android:id="@+id/tablero6"
+            android:layout_width="513dp"
+            android:layout_height="510dp"
+
+            android:background="@drawable/board_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/simpleChronometer"
+            tools:layout_editor_absoluteX="194dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

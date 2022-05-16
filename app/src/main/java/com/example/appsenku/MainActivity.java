@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         scoreB.setOnClickListener(new View.OnClickListener() {
                                      public void onClick(View v) {
                                          AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
-                                         alerta.setMessage("SU PUNTUACIÓN HASTA EL MOMENTO:  "+ t.puntuacion+ " puntos").setCancelable(true);
+                                         alerta.setMessage("PUNTUACIÓN ACUMULADA:  "+ t.puntuacion+ " ptos").setCancelable(true);
                                          AlertDialog titulo = alerta.create();
                                          titulo.setTitle("PUNTUACIÓN");
                                          titulo.show();
