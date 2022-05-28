@@ -36,18 +36,18 @@
         android:background="#A52A2A"
         android:backgroundTint="#A52A2A"
         android:text="Comenzar Juego"
-        app:layout_constraintBottom_toTopOf="@+id/puntuacion"
+        app:layout_constraintBottom_toTopOf="@+id/howto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
     <Button
-        android:id="@+id/puntuacion"
+        android:id="@+id/howto"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="#A52A2A"
-        android:text="Puntuación"
+        android:text="Como Jugar"
         app:layout_constraintBottom_toTopOf="@+id/salir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -64,5 +64,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/puntuacion" />
+        app:layout_constraintTop_toBottomOf="@+id/howto" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,9 +14,12 @@ import android.widget.Toast;
 
 public class Menu extends AppCompatActivity {
     public Activity test = null;
+    String link = "https://www.guiaspracticas.com/juegos-de-mesa/senku";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         getSupportActionBar().hide();
@@ -30,6 +34,15 @@ public class Menu extends AppCompatActivity {
             }
 
             
+        });
+
+        Button comoJugar = findViewById(R.id.howto);
+        comoJugar.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Uri _link = Uri.parse(link);
+                Intent intent = new Intent(Intent.ACTION_VIEW, _link);
+                startActivity(intent);
+            }
         });
 
         Button cerrar = findViewById(R.id.salir);
